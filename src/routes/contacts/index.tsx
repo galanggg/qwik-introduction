@@ -25,8 +25,10 @@ export default component$(() => {
                         return (
 
                             <li>
-                                <img src={contact.avatar} />
-                                {contact.name}
+                                <a href={"/contacts/" + contact.id + '/'}>
+                                    <img src={contact.avatar} />
+                                    {contact.name}
+                                </a>
                             </li>
                         )
                     })}</ul>
