@@ -1,4 +1,4 @@
-import { component$, Resource, useSignal, useStylesScoped$ } from "@builder.io/qwik";
+import { component$, Resource, useSignal, useStylesScoped$, $ } from "@builder.io/qwik";
 import { RequestHandler, useEndpoint } from "@builder.io/qwik-city";
 import { Contact, CONTACTS } from "./fake-db";
 import CSS from './index.css?inline'
@@ -11,10 +11,13 @@ export default component$(() => {
     useStylesScoped$(CSS)
     const endpoint = useEndpoint<typeof onGet>()
     const filter = useSignal('')
+    const setFilter = $((value: string) => {
+        filter.value = value
+    })
     return (
         <div>
             <h1>Contacts</h1>
-            <input placeholder="Search contacts.." onInput$={(event) => {filter.value = (event.target as HTMLInputElement).value}} />
+            <input placeholder="Search contacts.." onInput$={(event) => {setFilter((event.target as HTMLInputElement).value)}} />
 
             <p>Here some contacts</p>
             <Resource
