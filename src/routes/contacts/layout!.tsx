@@ -1,5 +1,12 @@
 import { component$, Slot } from '@builder.io/qwik';
+import { RequestHandler } from '@builder.io/qwik-city';
 import Header from '../../components/header/header';
+
+export const onRequest: RequestHandler = async ({cookie, response, request}) => {
+    if(!cookie.get('contact-login')) {
+        throw response.redirect("/login/?redirect=" + request.url)
+    }
+}
 
 export default component$(() => {
   return (

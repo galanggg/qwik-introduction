@@ -16,6 +16,7 @@ export default component$(() => {
                 onResolved={(c) => {
                     return (
                         <div>
+                            <a href="/contacts/">[Back]</a>
                            [<a href={`/contacts/${c.id}/edit/ `}>Edit</a>]
                             <div>
                                 <img src={c.avatar} />
